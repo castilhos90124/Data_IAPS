@@ -1,6 +1,7 @@
 class DataFile(object):
     #Atributos:
     filename = None
+    file = None
 
     def __init__(self,filename):
         self.filename=filename
