@@ -3,6 +3,7 @@ from CsvIaps import CsvIaps
 
 
 
+
 def main():
 
     filename = input("Entre com o nome do arquivo\n")
@@ -11,8 +12,8 @@ def main():
     csv = CsvIaps(filename)
 
 
-    print(f"txt name:{txt.getFilename()}")
-    print(f"csv name:{csv.getFilename()}")
+    print(f"txt name: {txt.getFilename()}")
+    print(f"csv name: {csv.getFilename()}")
 
 
 

@@ -7,3 +7,9 @@ class DataFile(object):
 
     def getFilename(self):
         return self.filename
+
+    def validateFilename(self,filename):
+        filename = filename.replace(".txt","")
+        filename = filename.replace(".csv","")
+
+        return filename
