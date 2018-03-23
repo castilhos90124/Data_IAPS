@@ -36,6 +36,6 @@ def main():
 
             txt.writeCsvAvalproc()
     print(txt.avalproc_data)
-
+    print(txt.attractproc_data)
 
 main()

@@ -4,6 +4,7 @@ class TxtIaps(DataFile):
 
     #avalproc_data = ["","","","","","",""] #armazena os dados importantes entre o logframe start e logframe end
     avalproc_data = [""] * 8
+    attractproc_data = [""] * 11
 
     def __init__(self,filename):
         name = self.validateFilename(filename)
@@ -29,7 +30,7 @@ class TxtIaps(DataFile):
         self.skipLine()
 
         #Nesse ponto a proxima linha a ser lida é a da Image: xxxx.jpg
-        
+
         while line != "***LogFrameEnd***":
             line = self.file.readline()
             word = line.split()
@@ -45,7 +46,23 @@ class TxtIaps(DataFile):
     #função que tokeniza as informaçoes entre logframe start e end do logframe Avalproc
     #retorna um array com as informaçoes desejadas
     def parseAttraprocLogframe(self):
-        pass
+        word = []
+        count = 0
+        line = ""
+
+        while line != "***LogFrameEnd***":
+            line = self.file.readline()
+            word = line.split()
+            #print(word)
+            #print(word[1],"\n")
+
+            self.attractproc_data[count] = word[1]
+            count +=1
+
+            line = self.clearString(line)
+        #Nesse ponto a proxima linha a ser lida é a Atractivity: x
+
+
 
     #função que verifica se a procedure é attracproc
     #returna true se for attracproc e false caso contrario
