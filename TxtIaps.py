@@ -2,6 +2,9 @@ from DataFile import DataFile
 
 class TxtIaps(DataFile):
 
+    #avalproc_data = ["","","","","","",""] #armazena os dados importantes entre o logframe start e logframe end
+    avalproc_data = [""] * 8
+
     def __init__(self,filename):
         name = self.validateFilename(filename)
         self.filename = name + ".txt"
@@ -17,10 +20,27 @@ class TxtIaps(DataFile):
 
 
     #função que tokeniza as informaçoes entre logframe start e end do logframe Avalproc
-    #retorna um array com as informaçoes desejadas
+    #armazena as informaçoes desejadas no self.avalproc_data
     def parseAvalprocLogframe(self):
+        word = []
+        count = 0
+        line = ""
+        #self.avalproc_data[0]=""
+        self.skipLine()
 
-        pass
+        #Nesse ponto a proxima linha a ser lida é a da Image: xxxx.jpg
+        
+        while line != "***LogFrameEnd***":
+            line = self.file.readline()
+            word = line.split()
+            #print(word)
+
+            self.avalproc_data[count] = word[1]
+            count +=1
+
+            line = self.clearString(line)
+        #print("\n")
+
 
     #função que tokeniza as informaçoes entre logframe start e end do logframe Avalproc
     #retorna um array com as informaçoes desejadas
@@ -39,7 +59,7 @@ class TxtIaps(DataFile):
             word = line.split(" ")
             #print(word)
             #print(word[1])
-
+            word[1] = self.clearString(word[1])
             if word[1] == "attractproc" :
                 return True
             else:

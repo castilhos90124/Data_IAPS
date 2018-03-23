@@ -19,17 +19,23 @@ def main():
     txt.skipHeader()
     #print(f"na main, txt readline: {txt.file.readline()}")
 
-    txt.skipLine()
+    #txt.skipLine()
     #print(f"na main, txt readline: {txt.file.readline()}")
 
-#while !eof :
-    if txt.isAttractproc() :
-        txt.parseAttraprocLogframe()
-        txt.writeCsvAttractproc()
-    else:
-        txt.parseAvalprocLogframe()
-        txt.writeCsvAvalproc()
+    while txt.clearString(txt.file.readline()) == "Level:2" :
+        #print("entrou no wile")
+        if txt.isAttractproc() :
+            #print("entrou no if")
+            txt.parseAttraprocLogframe()
 
+            txt.writeCsvAttractproc()
+        else:
+            #print("entrou no else")
+            txt.parseAvalprocLogframe()
+
+
+            txt.writeCsvAvalproc()
+    print(txt.avalproc_data)
 
 
 main()
