@@ -14,3 +14,7 @@ class DataFile(object):
         filename = filename.replace(".csv","")
 
         return filename
+
+    #Pula uma linha no arquivo
+    def skipLine(self):
+        self.file.readline()
