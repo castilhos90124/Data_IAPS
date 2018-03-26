@@ -1,8 +1,8 @@
 from DataFile import DataFile
+from Stactic import Stactic
 
 class TxtIaps(DataFile):
 
-    #avalproc_data = ["","","","","","",""] #armazena os dados importantes entre o logframe start e logframe end
     avalproc_data = [""] * 8
     attractproc_data = [""] * 11
 
@@ -39,7 +39,7 @@ class TxtIaps(DataFile):
             self.avalproc_data[count] = word[1]
             count +=1
 
-            line = self.clearString(line)
+            line = Stactic.clearString(line)
         #print("\n")
 
 
@@ -59,7 +59,7 @@ class TxtIaps(DataFile):
             self.attractproc_data[count] = word[1]
             count +=1
 
-            line = self.clearString(line)
+            line = Stactic.clearString(line)
         #Nesse ponto a proxima linha a ser lida é a Atractivity: x
 
 
@@ -69,14 +69,14 @@ class TxtIaps(DataFile):
     def isAttractproc(self):
         word = []
         line = self.file.readline()
-        line = self.clearString(line)
+        line = Stactic.clearString(line)
         #print(line)
         if line == "***LogFrameStart***":
             line = self.file.readline()
             word = line.split(" ")
             #print(word)
             #print(word[1])
-            word[1] = self.clearString(word[1])
+            word[1] = Stactic.clearString(word[1])
             if word[1] == "attractproc" :
                 return True
             else:
@@ -86,13 +86,6 @@ class TxtIaps(DataFile):
             return False
 
 
-    #recebe uma string e a retorna sem espaços e sem caracteres "especiais"
-    def clearString(self,string):
-        clean = string.replace(" ","")
-        clean = clean.replace("\t","")
-        clean = clean.replace("\n","")
-
-        return clean
 
     #funçao que escreve no arquivo csv as informaçoes importantes do logframe do Avalproc
     def writeCsvAvalproc(self):
@@ -100,4 +93,10 @@ class TxtIaps(DataFile):
 
     #funçao que escreve no arquivo csv as informaçoes importantes do logframe do Attracproc
     def writeCsvAttractproc(self):
+        pass
+
+    def writeCsvAvalprocHeader(self):
+        pass
+
+    def writeCsvAttractprocHeader(self):
         pass
