@@ -1,15 +1,13 @@
 from DataFile import DataFile
 from Stactic import Stactic
 
-class CsvIaps(DataFile):
+class CsvAvalproc(DataFile):
     #Atributos:
     def __init__(self,filename):
 
         name = self.validateFilename(filename)
         self.filename = name + ".csv"
 
-    def writeAvalprocTitles():
-        pass
-
-    def writeAttractprocTitles():
+    def writeAvalprocTitles(self):
+        self.file.write("anderson;\nlorenzo;")
         pass

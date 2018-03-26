@@ -1,5 +1,6 @@
 from TxtIaps import TxtIaps
-from CsvIaps import CsvIaps
+from CsvAttractproc import CsvAttractproc
+from CsvAvalproc import CsvAvalproc
 from Stactic import Stactic
 
 import os
@@ -12,8 +13,8 @@ def main():
     filename = input("Entre com o nome do arquivo\n")
 
     txt = TxtIaps(filename)
-    csv_avalproc = CsvIaps(filename + "_Avalproc")
-    csv_attractproc = CsvIaps(filename + "_Attractproc")
+    csv_avalproc = CsvAvalproc(filename + "_Avalproc")
+    csv_attractproc = CsvAttractproc(filename + "_Attractproc")
 
     #print(f"txt name: {txt.getFilename()}")
     #print(f"csv_avalproc name: {csv_avalproc.getFilename()}")
@@ -30,6 +31,10 @@ def main():
     #txt.skipLine()
     #print(f"na main, txt readline: {txt.file.readline()}")
 
+    csv_avalproc.writeAvalprocTitles()
+
+
+    #return
     while Stactic.clearString(txt.file.readline()) == "Level:2" :
 
         if txt.isAttractproc() :
