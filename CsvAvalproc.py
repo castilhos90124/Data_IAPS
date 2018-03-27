@@ -37,39 +37,41 @@ class CsvAvalproc(DataFile):
     def nextLine(self):
         self.file.write("\n")
 
+
+    #Retorna true se estourou o limite do array, false caso contrario
     def writeData(self,data_list,initial_index,final_index):
+        data_end = False
         for i in range(initial_index,final_index):
-            if i < data_list.len() :
-                self.file.write(self.data_list[i] + ";")
+            if i < len(data_list):
+                self.file.write(data_list[i] + ";")
+            else:
+                data_end = True
+        return data_end
+
+        return
 
     def write(self):
         data_end = False
         index = 0
 
-        #while not data_end :
+        while not data_end :
 
-        self.writeTitleCell("Image:")
+            self.writeTitleCell("Image:")
+            self.writeData(self.image,index, index + self.MAX_TABLE_WIDTH)
+            self.nextLine()
 
-        for i in range(index,self.MAX_TABLE_WIDTH):
-            self.file.write(self.image[i] + ";")
+            self.writeTitleCell("SAM:")
+            self.writeData(self.sam,index, index + self.MAX_TABLE_WIDTH)
+            self.nextLine()
 
-        self.nextLine()
+            self.writeTitleCell("Aval. RT:")
+            self.writeData(self.aval_rt,index, index + self.MAX_TABLE_WIDTH)
+            self.nextLine()
 
-        self.writeTitleCell("SAM:")
+            self.writeTitleCell("Aval. Resp:")
+            data_end = self.writeData(self.aval_resp,index, index + self.MAX_TABLE_WIDTH)
+            self.nextLine()
+            self.nextLine()
+            self.nextLine()
 
-        for i in range(index,self.MAX_TABLE_WIDTH):
-            self.file.write(self.sam[i] + ";")
-
-        self.nextLine()
-
-        self.writeTitleCell("Aval. RT:")
-
-        for i in range(index,self.MAX_TABLE_WIDTH):
-            self.file.write(self.aval_rt[i] + ";")
-
-        self.nextLine()
-
-        self.writeTitleCell("Aval. Resp:")
-
-        for i in range(index,self.MAX_TABLE_WIDTH):
-            self.file.write(self.aval_resp[i] + ";")
+            index = index + self.MAX_TABLE_WIDTH

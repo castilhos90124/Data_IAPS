@@ -40,17 +40,13 @@ def main():
     while Stactic.clearString(txt.file.readline()) == "Level:2" :
 
         if txt.isAttractproc() :
-            #print("entrou no if")
             txt.parseAttraprocLogframe()
 
-            #txt.writeCsvAttractproc()
         else:
-            #print("entrou no else")
             txt.parseAvalprocLogframe()
-
             csv_avalproc.appendData(txt.avalproc_data)
 
-            #csv_avalproc.write()
+
 
 
     #print(txt.avalproc_data)
