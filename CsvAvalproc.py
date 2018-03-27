@@ -4,6 +4,9 @@ import os
 
 
 class CsvAvalproc(DataFile):
+
+    MAX_TABLE_WIDTH = 14
+
     #Atributos:
     image = []
     sam = []
@@ -18,9 +21,9 @@ class CsvAvalproc(DataFile):
         name = self.validateFilename(filename)
         self.filename = name + ".csv"
 
-    def writeTitles(self):
-        
-        pass
+    def writeTitleCell(self,title_name):
+        self.file.write(title_name + ";")
+
 
     def appendData(self,txt_avalproc_data):
 
@@ -30,3 +33,43 @@ class CsvAvalproc(DataFile):
         self.aval_sample.append(txt_avalproc_data[3])
         self.aval_rt.append(txt_avalproc_data[5])
         self.aval_resp.append(txt_avalproc_data[6])
+
+    def nextLine(self):
+        self.file.write("\n")
+
+    def writeData(self,data_list,initial_index,final_index):
+        for i in range(initial_index,final_index):
+            if i < data_list.len() :
+                self.file.write(self.data_list[i] + ";")
+
+    def write(self):
+        data_end = False
+        index = 0
+
+        #while not data_end :
+
+        self.writeTitleCell("Image:")
+
+        for i in range(index,self.MAX_TABLE_WIDTH):
+            self.file.write(self.image[i] + ";")
+
+        self.nextLine()
+
+        self.writeTitleCell("SAM:")
+
+        for i in range(index,self.MAX_TABLE_WIDTH):
+            self.file.write(self.sam[i] + ";")
+
+        self.nextLine()
+
+        self.writeTitleCell("Aval. RT:")
+
+        for i in range(index,self.MAX_TABLE_WIDTH):
+            self.file.write(self.aval_rt[i] + ";")
+
+        self.nextLine()
+
+        self.writeTitleCell("Aval. Resp:")
+
+        for i in range(index,self.MAX_TABLE_WIDTH):
+            self.file.write(self.aval_resp[i] + ";")
