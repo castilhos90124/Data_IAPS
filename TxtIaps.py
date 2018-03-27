@@ -84,19 +84,3 @@ class TxtIaps(DataFile):
         else:
             print("Erro: funçao isAttractProc chamada na linha errada do txt\n")
             return False
-
-
-
-    #funçao que escreve no arquivo csv as informaçoes importantes do logframe do Avalproc
-    def writeCsvAvalproc(self):
-        pass
-
-    #funçao que escreve no arquivo csv as informaçoes importantes do logframe do Attracproc
-    def writeCsvAttractproc(self):
-        pass
-
-    def writeCsvAvalprocHeader(self):
-        pass
-
-    def writeCsvAttractprocHeader(self):
-        pass
