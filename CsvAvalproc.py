@@ -1,11 +1,11 @@
-from DataFile import DataFile
+from CsvIAPS import CsvIAPS
 from Stactic import Stactic
 import os
 
 
-class CsvAvalproc(DataFile):
+class CsvAvalproc(CsvIAPS):
 
-    MAX_TABLE_WIDTH = 14
+
 
     #Atributos:
     image = []
@@ -15,11 +15,6 @@ class CsvAvalproc(DataFile):
     aval_rt = []
     aval_resp = []
 
-
-    def __init__(self,filename):
-
-        name = self.validateFilename(filename)
-        self.filename = name + ".csv"
 
     def writeTitleCell(self,title_name):
         self.file.write(title_name + ";")

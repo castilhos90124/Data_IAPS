@@ -9,11 +9,3 @@ class Stactic(object):
         clean = clean.replace("\n","")
 
         return clean
-
-    def caseUnsensitive(string):
-        string = string.upper()
-        print(string)
-        string = string.lower()
-        print(string)
-
-        return string
