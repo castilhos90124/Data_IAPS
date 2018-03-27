@@ -22,8 +22,8 @@ def main():
 
 
     txt.file = open(txt.getFilename(), "r", encoding="utf-16-le")
-    csv_avalproc.file = open(csv_avalproc.getFilename(), "w")
-    csv_attractproc.file = open(csv_attractproc.getFilename(), "w")
+    csv_avalproc.file = open(csv_avalproc.getFilename(), "r+")
+    csv_attractproc.file = open(csv_attractproc.getFilename(), "r+")
 
     txt.skipHeader()
     #print(f"na main, txt readline: {txt.file.readline()}")
@@ -31,7 +31,7 @@ def main():
     #txt.skipLine()
     #print(f"na main, txt readline: {txt.file.readline()}")
 
-    csv_avalproc.writeAvalprocTitles()
+    csv_avalproc.writeTitles()
 
 
     #return
@@ -46,12 +46,24 @@ def main():
             #print("entrou no else")
             txt.parseAvalprocLogframe()
 
+            csv_avalproc.appendData(txt.avalproc_data)
 
             txt.writeCsvAvalproc()
-    print(txt.avalproc_data)
-    print(txt.attractproc_data)
+
+
+    #print(txt.avalproc_data)
+    #print(txt.attractproc_data)
+
+    #print(f"\n{csv_avalproc.image}")
+    #print(f"\n{csv_avalproc.sam}")
+    #print(f"\n{csv_avalproc.aval_cycle}")
+    #print(f"\n{csv_avalproc.aval_sample}")
+    #print(f"\n{csv_avalproc.aval_rt}")
+    print(f"\n{csv_avalproc.aval_resp}")
+
 
     txt.file.close()
     csv_avalproc.file.close()
+    csv_attractproc.file.close()
 
 main()
